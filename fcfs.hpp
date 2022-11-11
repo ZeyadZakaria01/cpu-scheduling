@@ -2,10 +2,9 @@
 #define fcfs_hpp
 
 #include "process.hpp"
-#include <bits/stdc++.h>
 
-bool fcfs_sort(Process const &p1, Process const &p2);
+bool fcfs_sort(Process* p1, Process* p2);
 
-void first_come_first_serve(std::vector<Process> processes);
+void first_come_first_serve(std::vector<Process*> processes);
 
 #endif
