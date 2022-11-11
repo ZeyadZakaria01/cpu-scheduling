@@ -21,12 +21,15 @@ void TraceHandler::print_trace(std::vector<Process *> simulation, string mode) {
   //
   for (Process *p : simulation) {
     int t = this->last_instances;
+    int r = p->service_time;
     cout << p->name << "     ";
     for (char ch : p->status) {
       cout << "|";
-      if (p->arrive_time > t && ch != '*') {
+      if (p->arrive_time > t && ch != '*' && r != 0) {
         cout << ".";
       } else {
+        if (ch == '*')
+          r--;
         cout << ch;
       }
       cout << "|";
