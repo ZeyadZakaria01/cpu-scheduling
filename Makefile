@@ -24,7 +24,7 @@ scheduler: clean main.o process.o fcfs.o spn.o rr.o tracehandler.o
 	$(CC) -o scheduler process.o fcfs.o rr.o spn.o tracehandler.o main.o
 
 custom_run:
-	./scheduler < ./testcases/01a-input.txt
+	./scheduler < testcases.txt
 
 clean:
 	rm -f *.o *.out scheduler
