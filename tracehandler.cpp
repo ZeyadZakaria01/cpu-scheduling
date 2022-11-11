@@ -25,14 +25,20 @@ void TraceHandler::print_trace(std::vector<Process *> simulation, string mode) {
     cout << p->name << "     ";
     for (char ch : p->status) {
       cout << "|";
-      if (p->arrive_time <= t && ch != '*' ) {
-        cout << ".";
+      if (p->arrive_time <= t && ch != '*') {
+        if (r <= 0) {
+          cout << " ";
+        } else {
+          cout << ".";
+        }
       } else {
+        if (ch == '*')
+          r--;
         cout << ch;
       }
       t++;
     }
-      cout << "|";
+    cout << "|";
     cout << "\n"; // TODO:maybe better to flush to use endl
   }
 
