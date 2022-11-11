@@ -8,14 +8,17 @@ process.o: process.cpp
 fcfs.o: fcfs.cpp
 	$(CC) -c fcfs.cpp
 
+rr.o: rr.cpp
+	$(CC) -c rr.cpp
+
 main.o: main.cpp
 	$(CC) -c main.cpp
 
-scheduler: clean main.o process.o fcfs.o
-	$(CC) -o scheduler process.o fcfs.o main.o
+scheduler: clean main.o process.o fcfs.o rr.o
+	$(CC) -o scheduler process.o fcfs.o rr.o main.o
 
 custom_run:
-	./scheduler < ./testcases/01a-input.txt
+	./scheduler < testcases.txt
 
 clean:
 	rm -f *.o *.out scheduler
