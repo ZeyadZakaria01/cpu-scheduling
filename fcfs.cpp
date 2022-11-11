@@ -9,8 +9,7 @@ bool fcfs_sort(Process *p1, Process *p2) {
 void first_come_first_serve(std::vector<Process *> processes) {
   using namespace std;
   int t = 0;
-  cout << "In FCFS\n";
-  cout << "hI";
+  cout << "In FCFS  \n";
   queue<Process *> q;
 
   std::sort(processes.begin(), processes.end(), &fcfs_sort);
@@ -19,7 +18,6 @@ void first_come_first_serve(std::vector<Process *> processes) {
   while (!q.empty()) {
     Process *p = q.front();
     q.pop();
-    std::cout << "At Process" << p->name;
     while (p->remaining_time != 0) {
       p->remaining_time--;
       p->status[t] = '*';
