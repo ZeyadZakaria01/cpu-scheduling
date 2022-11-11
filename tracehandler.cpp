@@ -13,7 +13,7 @@ TraceHandler::TraceHandler(int last_instances) {
 void TraceHandler::print_trace(std::vector<Process *> simulation, string mode) {
   // first row
   cout << mode << "  ";
-  for (int i = 0; i < this->last_instances; i++) {
+  for (int i = 0; i < this->last_instances + 1; i++) {
     cout << i % 10 << " ";
   }
   // second row
