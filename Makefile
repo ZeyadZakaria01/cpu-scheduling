@@ -11,17 +11,20 @@ fcfs.o: fcfs.cpp
 rr.o: rr.cpp
 	$(CC) -c rr.cpp
 
+spn.o: spn.cpp
+	$(CC) -c spn.cpp
+
 tracehandler.o: tracehandler.cpp
 	$(CC) -c tracehandler.cpp
 
 main.o: main.cpp
 	$(CC) -c main.cpp
 
-scheduler: clean main.o process.o fcfs.o rr.o tracehandler.o
-	$(CC) -o scheduler process.o fcfs.o rr.o tracehandler.o main.o
+scheduler: clean main.o process.o fcfs.o spn.o rr.o tracehandler.o
+	$(CC) -o scheduler process.o fcfs.o rr.o spn.o tracehandler.o main.o
 
 custom_run:
-	./scheduler < testcases.txt
+	./scheduler < ./testcases/01a-input.txt
 
 clean:
 	rm -f *.o *.out scheduler
