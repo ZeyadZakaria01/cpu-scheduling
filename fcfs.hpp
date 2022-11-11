@@ -3,8 +3,6 @@
 
 #include "process.hpp"
 
-bool fcfs_sort(Process* p1, Process* p2);
-
-void first_come_first_serve(std::vector<Process*> processes);
+void first_come_first_serve(std::vector<Process *> processes);
 
 #endif
