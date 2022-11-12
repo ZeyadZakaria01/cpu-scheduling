@@ -2,6 +2,7 @@
 #include "process.hpp"
 #include "rr.hpp"
 #include "spn.hpp"
+#include "srt.hpp"
 #include "tracehandler.hpp"
 
 using namespace std;
@@ -71,6 +72,7 @@ void do_scheduling(string str, vector<Process *> processes, int last_instant)
     }
     case 4:
     {
+      srt(p_copy, last_instant);
       tc->print_trace(p_copy, "SRT");
       break;
     }
