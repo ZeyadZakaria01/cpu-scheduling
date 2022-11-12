@@ -17,14 +17,17 @@ spn.o: spn.cpp spn.hpp
 srt.o: srt.cpp srt.hpp
 	$(CC) -c srt.cpp
 
+hrrn.o: hrrn.cpp hrrn.hpp
+	$(CC) -c hrrn.cpp
+
 tracehandler.o: tracehandler.cpp tracehandler.hpp
 	$(CC) -c tracehandler.cpp
 
 main.o: main.cpp
 	$(CC) -c main.cpp
 
-scheduler: clean main.o process.o fcfs.o spn.o rr.o srt.o tracehandler.o
-	$(CC) -o scheduler process.o fcfs.o rr.o spn.o srt.o tracehandler.o main.o
+scheduler: clean main.o process.o fcfs.o spn.o rr.o srt.o hrrn.o tracehandler.o
+	$(CC) -o scheduler process.o fcfs.o rr.o spn.o srt.o hrrn.o tracehandler.o main.o
 
 custom_run:
 	./scheduler < testcases.txt
