@@ -6,77 +6,105 @@
 
 using namespace std;
 
-void do_scheduling(string str, vector<Process *> processes, int last_instant) {
+vector<Process *> deep_copy(vector<Process *> vc)
+{
+  vector<Process *> new_vc;
+  for (auto p : vc)
+  {
+    Process *p_tmp = new Process(p->name, p->arrive_time, p->service_time, p->status.size());
+    new_vc.push_back(p_tmp);
+  }
+  return new_vc;
+}
+
+void do_scheduling(string str, vector<Process *> processes, int last_instant)
+{
   TraceHandler *tc = new TraceHandler(last_instant);
 
   std::replace(str.begin(), str.end(), ',', ' ');
   vector<string> array;
   stringstream ss(str);
   string q_policy;
+  while (ss >> q_policy)
+  {
+    vector<Process *> p_copy = deep_copy(processes);
+    // vector<Process *> p_copy = processes;
 
-  while (ss >> q_policy) {
     int policy;
     int quantum;
     std::replace(q_policy.begin(), q_policy.end(), '-', ' ');
-    // vector<string> my_array;
     stringstream my_ss(q_policy);
     string temp;
     bool is_policy = true;
-    while (my_ss >> temp) {
-      if (is_policy) {
+    while (my_ss >> temp)
+    {
+      if (is_policy)
+      {
         policy = stoi(temp);
         is_policy = false;
-      } else {
+      }
+      else
+      {
         quantum = stoi(temp);
       }
     }
-    switch (policy) {
-    case 1: {
-      first_come_first_serve(processes);
-      tc->print_trace(processes, "FCFS");
+    switch (policy)
+    {
+    case 1:
+    {
+      first_come_first_serve(p_copy);
+      tc->print_trace(p_copy, "FCFS");
       break;
     }
-    case 2: {
-      rr_serve(processes, quantum, last_instant);
+    case 2:
+    {
+      rr_serve(p_copy, quantum, last_instant);
       string str = "RR-" + to_string(quantum);
-      tc->print_trace(processes, str);
+      tc->print_trace(p_copy, str);
       break;
     }
-    case 3: {
-      shortest_process_next(processes,last_instant);
-      tc->print_trace(processes, "SPN");
+    case 3:
+    {
+      shortest_process_next(p_copy, last_instant);
+      tc->print_trace(p_copy, "SPN");
       break;
     }
-    case 4: {
-      tc->print_trace(processes, "SRT");
+    case 4:
+    {
+      tc->print_trace(p_copy, "SRT");
       break;
     }
-    case 5: {
-      tc->print_trace(processes, "HRRN");
+    case 5:
+    {
+      tc->print_trace(p_copy, "HRRN");
       break;
     }
-    case 6: {
-      tc->print_trace(processes, "FB-1");
+    case 6:
+    {
+      tc->print_trace(p_copy, "FB-1");
       break;
     }
-    case 7: {
-      tc->print_trace(processes, "FB-2i");
+    case 7:
+    {
+      tc->print_trace(p_copy, "FB-2i");
       break;
     }
-    case 8: {
-      tc->print_trace(processes, "Aging");
+    case 8:
+    {
+      tc->print_trace(p_copy, "Aging");
       break;
     }
-    default: {
+    default:
       cout << "Random value I guess? :D";
-    }
     }
   }
 }
 
-int main() {
+int main()
+{
   vector<string> vc(4);
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < 4; i++)
+  {
     cin >> vc[i];
   }
   string mode = vc[0];
@@ -84,7 +112,8 @@ int main() {
   int last_instant = stoi(vc[2]);
   int number_of_processes = stoi(vc[3]);
   vector<Process *> processes;
-  for (int i = 0; i < number_of_processes; i++) {
+  for (int i = 0; i < number_of_processes; i++)
+  {
     string str;
     cin >> str;
     std::replace(str.begin(), str.end(), ',', ' '); // replace ',' by ' '
@@ -101,7 +130,8 @@ int main() {
   cout << "policy: " << policy << endl;
   printf("last_instant: %d\nnumber_of_processes:%d\n", last_instant,
          number_of_processes);
-  for (int i = 0; i < number_of_processes; i++) {
+  for (int i = 0; i < number_of_processes; i++)
+  {
     printf("%c,%d,%d\n", processes[i]->name, processes[i]->arrive_time,
            processes[i]->service_time);
   }
