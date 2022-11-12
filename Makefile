@@ -1,20 +1,20 @@
-CC = g++ -g
+CC = g++
 
 all: scheduler custom_run
 
-process.o: process.cpp
+process.o: process.cpp process.hpp
 	$(CC) -c process.cpp
 
-fcfs.o: fcfs.cpp
+fcfs.o: fcfs.cpp fcfs.hpp
 	$(CC) -c fcfs.cpp
 
-rr.o: rr.cpp
+rr.o: rr.cpp rr.hpp
 	$(CC) -c rr.cpp
 
-spn.o: spn.cpp
+spn.o: spn.cpp spn.hpp
 	$(CC) -c spn.cpp
 
-tracehandler.o: tracehandler.cpp
+tracehandler.o: tracehandler.cpp tracehandler.hpp
 	$(CC) -c tracehandler.cpp
 
 main.o: main.cpp
