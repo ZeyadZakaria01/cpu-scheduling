@@ -20,6 +20,10 @@ void first_come_first_serve(std::vector<Process *> processes) {
 
   while (!q.empty()) {
     Process *p = q.front();
+    if (p->arrive_time < t) {
+      t++;
+      continue;
+    }
     q.pop();
     while (p->remaining_time != 0) {
       p->remaining_time--;
