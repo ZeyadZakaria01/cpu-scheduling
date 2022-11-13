@@ -1,17 +1,4 @@
 #include "rr.hpp"
-bool check_arrived(std::vector<Process *> processes, std::queue<Process *> &q, int t)
-{
-    bool flag = false;
-    for (Process *p : processes)
-    {
-        if (p->arrive_time == t)
-        {
-            q.push(p);
-            flag = true;
-        }
-    }
-    return flag;
-}
 void rr_serve(std::vector<Process *> processes, int quantum, int last_instant)
 {
     using namespace std;
