@@ -10,7 +10,6 @@ bool spn_priority(Process *p1, Process *p2) {
 void shortest_process_next(std::vector<Process *> processes, int last_instant) {
   using namespace std;
   int t = 0;
-  cout << "In SPN\n";
   priority_queue<Process *, vector<Process *>,
                  function<bool(Process *, Process *)>>
       pq(spn_priority);

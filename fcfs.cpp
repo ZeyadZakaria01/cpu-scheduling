@@ -9,8 +9,6 @@ bool fcfs_sort(Process *p1, Process *p2) {
 void first_come_first_serve(std::vector<Process *> processes) {
   using namespace std;
   int t = 0;
-  cout << "In FCFS\n";
-  // cout << "hI";
   queue<Process *> q;
 
   std::sort(processes.begin(), processes.end(), &fcfs_sort);

@@ -50,7 +50,6 @@ void hrrn(std::vector<Process *> processes, int last_instant)
 		pq.pop();
 		while (p->remaining_time != 0)
 		{
-			cout << "name=" << p->name << ",remaining time=" << p->remaining_time << endl;
 			for (Process *ptmp : processes)
 			{
 				if (ptmp->arrive_time == t)

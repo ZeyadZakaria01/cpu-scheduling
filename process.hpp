@@ -10,11 +10,12 @@ public:
   int remaining_time;
   int finish_time;
   int waiting_time;
+  int priority;
   std::vector<char> status;
 
   Process();
   Process(char name, int arrive_time, int service_time,int last_instant);
-  Process(char name, int arrive_time, int service_time,int last_instant,int waiting_time);
+  Process(char name, int arrive_time, int service_time,int last_instant,int priority);
   float getNormTurn();
   int getTurnAround();
 };

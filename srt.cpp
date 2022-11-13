@@ -34,7 +34,6 @@ void srt(std::vector<Process *> processes, int last_instant) {
         flag_push = true;
       }
       if (p->arrive_time == t) {
-        cout << p->name << endl;
         pq.push(p);
       }
       if (flag_push) {

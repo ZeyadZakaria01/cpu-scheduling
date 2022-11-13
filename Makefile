@@ -19,6 +19,9 @@ spn.o: spn.cpp spn.hpp
 srt.o: srt.cpp srt.hpp
 	$(CC) -c srt.cpp
 
+aging.o: aging.cpp aging.hpp
+	$(CC) -c aging.cpp
+
 hrrn.o: hrrn.cpp hrrn.hpp
 	$(CC) -c hrrn.cpp
 
