@@ -44,5 +44,4 @@ void TraceHandler::output(std::vector<Process *> simulation, string mode) {
   // second row
   for (int i = 0; i < l; i++)
     cout << '-';
-  cout << endl;
 }

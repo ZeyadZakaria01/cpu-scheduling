@@ -63,7 +63,4 @@ void StatsHandler::output(vector<Process *> simulation, string mode) {
   printf(" %-.2f", sum_norm_turn / (float)simulation.size());
   cout << "|";
   cout << endl;
-
-  // like output
-  cout << endl;
 }
