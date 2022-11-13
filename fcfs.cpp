@@ -30,6 +30,10 @@ void first_come_first_serve(std::vector<Process *> processes) {
       p->status[t] = '*';
       t++;
     }
+    // useless condition
+    if(p->remaining_time==0){
+        p->finish_time = t;
+    }
   }
   std::cout << std::endl;
 }
