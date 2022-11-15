@@ -2,3 +2,4 @@
 test.cpp
 .vscode/
 testcases.txt
+*.tar.gz
