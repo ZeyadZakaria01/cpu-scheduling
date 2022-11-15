@@ -59,6 +59,7 @@ void hrrn(std::vector<Process *> processes, int last_instant)
 			}
 			p->remaining_time--;
 			p->status[t] = '*';
+			t++;
 			if (p->remaining_time == 0)
 			{
 				p->finish_time = t;
@@ -73,7 +74,6 @@ void hrrn(std::vector<Process *> processes, int last_instant)
 			}
 			for (Process *waiting_proces : waiting_in_pq)
 				pq.push(waiting_proces);
-			t++;
 		}
 	}
 }

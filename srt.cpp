@@ -17,13 +17,13 @@ void srt(std::vector<Process *> processes, int last_instant) {
       p->remaining_time--;
       p->status[t] = '*';
 
+      t++;
       if (p->remaining_time > 0) {
 
         pq.push(p);
       } else {
         p->finish_time = t;
       }
-      t++;
     }
     for (Process *p : processes) {
       bool flag_push = false;

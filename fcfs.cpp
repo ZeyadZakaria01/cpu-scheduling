@@ -33,5 +33,4 @@ void first_come_first_serve(std::vector<Process *> processes) {
         p->finish_time = t;
     }
   }
-  std::cout << std::endl;
 }
