@@ -9,6 +9,7 @@
 #include "statshandler.hpp"
 #include "tracehandler.hpp"
 #include "utils.hpp"
+#include <ostream>
 
 using namespace std;
 
@@ -32,7 +33,6 @@ void do_scheduling_trace(string str, vector<Process *> processes,
   string q_policy;
   while (ss >> q_policy) {
     vector<Process *> p_copy = deep_copy(processes);
-    // vector<Process *> p_copy = processes;
 
     int policy;
     int quantum;
@@ -192,14 +192,14 @@ int main() {
         new Process(array[0][0], stoi(array[1]), stoi(array[2]), last_instant);
     processes.push_back(p);
   }
-  cout << "mode: " << mode << endl;
-  cout << "policy: " << policy << endl;
-  printf("last_instant: %d\nnumber_of_processes:%d\n", last_instant,
-         number_of_processes);
-  for (int i = 0; i < number_of_processes; i++) {
-    printf("%c,%d,%d\n", processes[i]->name, processes[i]->arrive_time,
-           processes[i]->service_time);
-  }
+  /* cout << "mode: " << mode << endl; */
+  /* cout << "policy: " << policy << endl; */
+  /* printf("last_instant: %d\nnumber_of_processes:%d\n", last_instant, */
+  /*        number_of_processes); */
+  /* for (int i = 0; i < number_of_processes; i++) { */
+  /*   printf("%c,%d,%d\n", processes[i]->name, processes[i]->arrive_time, */
+  /*          processes[i]->service_time); */
+  /* } */
   if (policy == "aging") {
     for (int i = 0; i < number_of_processes; i++)
       processes[i]->priority = processes[i]->service_time;
