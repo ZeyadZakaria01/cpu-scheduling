@@ -1,4 +1,3 @@
-
 #ifndef statshandler_hpp
 #define statshandler_hpp
 
