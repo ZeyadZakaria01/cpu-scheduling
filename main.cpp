@@ -1,16 +1,7 @@
-#include "fb1.hpp"
-#include "fbi.hpp"
-#include "fcfs.hpp"
-#include "hrrn.hpp"
 #include "process.hpp"
-#include "rr.hpp"
-#include "spn.hpp"
-#include "srt.hpp"
-#include "statshandler.hpp"
-#include "tracehandler.hpp"
-#include "aging.hpp"
+#include "policies.hpp"
+#include "handlers.hpp"
 #include "utils.hpp"
-#include <ostream>
 
 using namespace std;
 

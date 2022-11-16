@@ -1,6 +1,6 @@
 CC = g++
 
-.PHONY: all custom_run
+.PHONY: all 
 
 all: scheduler custom_run 
 
@@ -35,41 +35,44 @@ utils.o: utils.cpp utils.hpp
 	$(CC) -c utils.cpp
 
 handlers: statshandler.cpp statshandler.hpp tracehandler.cpp tracehandler.hpp
-	@echo Building handlers... | lolcat || @echo Building handlers...
+	@echo "Building Handlers..."
 	$(CC) -c tracehandler.cpp statshandler.cpp
 
 main.o: main.cpp
 	$(CC) -c main.cpp
 
-scheduler: clean main.o process.o fcfs.o spn.o rr.o srt.o hrrn.o fbi.o fb1.o aging.o utils.o handlers
-	@echo Building Executable... | lolcat || @echo Building Executable...
-	$(CC) -o scheduler process.o fcfs.o rr.o spn.o srt.o hrrn.o fbi.o fb1.o utils.o aging.o tracehandler.o statshandler.o main.o
+scheduler: main.o process.o fcfs.o spn.o rr.o srt.o hrrn.o fbi.o fb1.o aging.o utils.o handlers
+	@echo "Building Executable..."
+	$(CC) -o lab4 process.o fcfs.o rr.o spn.o srt.o hrrn.o fbi.o fb1.o utils.o aging.o tracehandler.o statshandler.o main.o
+	@echo "Built Successfull"
 
 custom_run:
-	./scheduler < testcases.txt
+	./lab4 < testcases.txt
 
 test_all: scheduler
-	cat ./testcases/01a-input.txt | ./scheduler | diff ./testcases/01a-output.txt -
-	cat ./testcases/01b-input.txt | ./scheduler | diff ./testcases/01b-output.txt -
-	cat ./testcases/02a-input.txt | ./scheduler | diff ./testcases/02a-output.txt -
-	cat ./testcases/02b-input.txt | ./scheduler | diff ./testcases/02b-output.txt -
-	cat ./testcases/03a-input.txt | ./scheduler | diff ./testcases/03a-output.txt -
-	cat ./testcases/03b-input.txt | ./scheduler | diff ./testcases/03b-output.txt -
-	cat ./testcases/04a-input.txt | ./scheduler | diff ./testcases/04a-output.txt -
-	cat ./testcases/04b-input.txt | ./scheduler | diff ./testcases/04b-output.txt -
-	cat ./testcases/05a-input.txt | ./scheduler | diff ./testcases/05a-output.txt -
-	cat ./testcases/05b-input.txt | ./scheduler | diff ./testcases/05b-output.txt -
-	cat ./testcases/06a-input.txt | ./scheduler | diff ./testcases/06a-output.txt -
-	cat ./testcases/06b-input.txt | ./scheduler | diff ./testcases/06b-output.txt -
-	cat ./testcases/07a-input.txt | ./scheduler | diff ./testcases/07a-output.txt -
-	cat ./testcases/07b-input.txt | ./scheduler | diff ./testcases/07b-output.txt -
-	cat ./testcases/08a-input.txt | ./scheduler | diff ./testcases/08a-output.txt -
-	cat ./testcases/08b-input.txt | ./scheduler | diff ./testcases/08b-output.txt -
-	cat ./testcases/09a-input.txt | ./scheduler | diff ./testcases/09a-output.txt -
-	cat ./testcases/09b-input.txt | ./scheduler | diff ./testcases/09b-output.txt -
-	cat ./testcases/10a-input.txt | ./scheduler | diff ./testcases/10a-output.txt -
-	cat ./testcases/10b-input.txt | ./scheduler | diff ./testcases/10b-output.txt -
+	@echo "Start Testing..."
+	cat ./testcases/01a-input.txt | ./lab4 | diff ./testcases/01a-output.txt -
+	cat ./testcases/01b-input.txt | ./lab4 | diff ./testcases/01b-output.txt -
+	cat ./testcases/02a-input.txt | ./lab4 | diff ./testcases/02a-output.txt -
+	cat ./testcases/02b-input.txt | ./lab4 | diff ./testcases/02b-output.txt -
+	cat ./testcases/03a-input.txt | ./lab4 | diff ./testcases/03a-output.txt -
+	cat ./testcases/03b-input.txt | ./lab4 | diff ./testcases/03b-output.txt -
+	cat ./testcases/04a-input.txt | ./lab4 | diff ./testcases/04a-output.txt -
+	cat ./testcases/04b-input.txt | ./lab4 | diff ./testcases/04b-output.txt -
+	cat ./testcases/05a-input.txt | ./lab4 | diff ./testcases/05a-output.txt -
+	cat ./testcases/05b-input.txt | ./lab4 | diff ./testcases/05b-output.txt -
+	cat ./testcases/06a-input.txt | ./lab4 | diff ./testcases/06a-output.txt -
+	cat ./testcases/06b-input.txt | ./lab4 | diff ./testcases/06b-output.txt -
+	cat ./testcases/07a-input.txt | ./lab4 | diff ./testcases/07a-output.txt -
+	cat ./testcases/07b-input.txt | ./lab4 | diff ./testcases/07b-output.txt -
+	cat ./testcases/08a-input.txt | ./lab4 | diff ./testcases/08a-output.txt -
+	cat ./testcases/08b-input.txt | ./lab4 | diff ./testcases/08b-output.txt -
+	cat ./testcases/09a-input.txt | ./lab4 | diff ./testcases/09a-output.txt -
+	cat ./testcases/09b-input.txt | ./lab4 | diff ./testcases/09b-output.txt -
+	cat ./testcases/10a-input.txt | ./lab4 | diff ./testcases/10a-output.txt -
+	cat ./testcases/10b-input.txt | ./lab4 | diff ./testcases/10b-output.txt -
+	@echo "Success!"
 
 clean:
-	@echo Cleaning... | lolcat || echo Cleaning..
+	@echo Cleaning... 
 	rm -f *.o *.out scheduler
