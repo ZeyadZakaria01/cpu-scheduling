@@ -1,4 +1,5 @@
 #include "aging.hpp"
+#include "process.hpp"
 
 using namespace std;
 void update_pq(priority_queue<Process *, vector<Process *>, function<bool(Process *, Process *)>> &pq)
@@ -48,6 +49,7 @@ void aging(vector<Process *> processes, int quantum, int last_instant)
 	for (Process *p : processes)
 	{
 		p->priority = p->service_time;
+        p->service_time = 1e5;
 		original_priorities[p->name] = p->priority;
 	}
 
@@ -81,4 +83,25 @@ void aging(vector<Process *> processes, int quantum, int last_instant)
 		// cout << "After excution, p->name=" << p->name << ",p->priority=" << p->priority << endl << endl;
 		pq.push(p);
 	}
+
+    /* for(int i = 0 ; i < t;i++) */
+    /* { */
+    /*     for(Process *p:processes) */
+    /*     { */
+    /*         if(p->status[i] == '*') */
+    /*         { */
+    /*             continue; */
+    /*         } */
+    /*         else{ */
+    /*             p->status[i] = '.'; */
+    /*         } */
+    /*     } */
+    /* } */
+    /* for(Process *p: processes) */
+    /* { */
+    /*     cout<<p->name; */
+    /*     for(char ch: p->status) */
+    /*         cout<<ch<<" "; */
+    /*     cout<<endl; */
+    /* } */
 }

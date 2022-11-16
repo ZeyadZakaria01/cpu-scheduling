@@ -1,5 +1,5 @@
 #ifndef aging_hpp
-#define agin_hpp
+#define aging_hpp
 
 #include "process.hpp"
 
