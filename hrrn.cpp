@@ -52,7 +52,7 @@ void hrrn(std::vector<Process *> processes, int last_instant)
 		{
 			for (Process *ptmp : processes)
 			{
-				if (ptmp->arrive_time == t)
+				if (ptmp->arrive_time == t && ptmp->name != p->name)
 				{
 					pq.push(ptmp);
 				}
