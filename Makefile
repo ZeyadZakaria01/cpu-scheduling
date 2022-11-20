@@ -71,6 +71,10 @@ test_all: scheduler
 	cat ./testcases/09b-input.txt | ./lab4 | diff ./testcases/09b-output.txt -
 	cat ./testcases/10a-input.txt | ./lab4 | diff ./testcases/10a-output.txt -
 	cat ./testcases/10b-input.txt | ./lab4 | diff ./testcases/10b-output.txt -
+	cat ./testcases/11a-input.txt | ./lab4 | diff ./testcases/11a-output.txt -
+	cat ./testcases/11b-input.txt | ./lab4 | diff ./testcases/11b-output.txt -
+	cat ./testcases/12a-input.txt | ./lab4 | diff ./testcases/12a-output.txt -
+	cat ./testcases/12b-input.txt | ./lab4 | diff ./testcases/12b-output.txt -
 	@echo "Success!"
 
 test_new_all: scheduler
