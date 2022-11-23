@@ -18,8 +18,33 @@ bool is_rq_empty(std::vector<std::queue<Process *>> &rq) {
   }
   return true;
 }
+int get_queue_index1(std::vector<std::queue<Process *>> &rq, char last_name) {
+  using namespace std;
+  std::vector<std::pair<char, int>> idxs;
+  int rqi = 0;
+  for (int i = 0; i < rq.size(); i++) {
+    if (!rq[i].empty()) {
+      idxs.push_back({rq[i].front()->name, i});
+    }
+  }
+
+  if (idxs.size() == 1 || last_name == idxs[idxs.size() - 1].first) {
+    return idxs[0].second;
+  } else {
+    for (int i = 0; i < idxs.size(); i++) {
+      if (last_name == idxs[i].first) {
+        if (i != 0) {
+          return idxs[0].second;
+        }
+        return idxs[i + 1].second;
+      }
+    }
+  }
+  return idxs[0].second;
+}
+
 int get_queue_index(std::vector<std::queue<Process *>> &rq, char last_name) {
-    using namespace std;
+  using namespace std;
   std::vector<std::pair<char, int>> idxs;
   int rqi = 0;
   for (int i = 0; i < rq.size(); i++) {

@@ -19,7 +19,7 @@ void fb1(vector<Process *> processes, int last_instant, int number_of_queues) {
         t++;
     }
     int rqi =
-        get_queue_index(rq, last_name); // Get the index of 1st non empty queue
+        get_queue_index1(rq, last_name); // Get the index of 1st non empty queue
     queue<Process *> *q = &rq[rqi];
     Process *p = q->front();
 
@@ -29,8 +29,8 @@ void fb1(vector<Process *> processes, int last_instant, int number_of_queues) {
     p->remaining_time--;
     q->pop();
     t++;
-    bool rq_empty = is_rq_empty(rq); // Taking the flag first
     check_arrived(processes, rq[0], t);
+    bool rq_empty = is_rq_empty(rq); // Taking the flag first
     if (p->remaining_time > 0)
       push_in_rq(rq, p, rqi, rq_empty);
     else {
