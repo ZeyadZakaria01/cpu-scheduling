@@ -1,4 +1,4 @@
-# Scheduling Simulator
+# CPU Scheduling
 
 This project is a scheduling simulator that implements a variety of scheduling algorithms. The makefile included in this project can be used to build and run the simulator.
 
