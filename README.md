@@ -7,11 +7,32 @@ This project is a scheduling simulator that implements a variety of scheduling a
 The simulator depends on the following libraries:
 * `g++`
 * `diff`
+* `cmake`
+
+## Building Binary
+### Configuring cmake
+1. create a `build` directory.
+```bash
+mkdir build
+```
+2. change current directory to `build`
+```bash
+cd build
+```
+3. start cmake
+```bash
+cmake -S ../ -B .
+```
+4. Building binary
+```bash
+make
+```
+**Following these steps will result in a binary in ```./build/``` called ```scheduler```**
 ## Usage
 
-To build the simulator, run the following command:
+To build the simulator, run the following command(after configuring cmake):
 ```
-make
+make cmake-build
 ```
 This will create an executable file called scheduler. To run the simulator, use the following command:
 ```
@@ -41,11 +62,11 @@ Additional Notes
 
 - The ```stats``` keyword can be used to print out statistics about the scheduling decisions that are made.
 
-## Tests
+## Testing
 
-The makefile also includes a target called test_all that can be used to run the simulator on a set of test cases. To run the tests, run the following command:
+The makefile also includes a target called test_all that can be used to run the simulator on a set of test cases. To run the tests, run the following command(in the project root directory):
 ```
-make test_all
+make test_all new_test_all
 ```
 This will run the simulator on all of the test cases in the testcases directory.
 ## Clean
