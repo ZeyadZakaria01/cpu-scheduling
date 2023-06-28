@@ -3,3 +3,6 @@ test.cpp
 .vscode/
 testcases.txt
 *.tar.gz
+build
+lab4
+scheduler
